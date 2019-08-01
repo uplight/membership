@@ -1,0 +1,23 @@
+<div>
+    <app-person-address></app-person-address>
+
+    <mat-action-row>
+        <div class="flex-container">
+            <div>
+                <button routerLink="/member/personal"
+                        mat-raised-button
+                        color="primary"
+                >
+                    <mat-icon>navigate_before</mat-icon>
+                </button>
+            </div>
+            <div></div>
+            <button routerLink="/member/files"
+                    mat-raised-button [disabled]="!(isValid$ | async)"
+                    color="primary"
+            >
+                <mat-icon>navigate_next</mat-icon>
+            </button>
+        </div>
+    </mat-action-row>
+</div>

@@ -1,0 +1,60 @@
+<div class="mat-body my-form-container">
+    <div class="text-box scrollY300px">
+        <div [innerHTML]="agreement"></div>
+    </div>
+    <div class="text-center">
+
+    </div>
+    <br/>
+
+    <mat-action-row>
+        <div class="flex-container">
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div>
+                <mat-checkbox [(ngModel)]="agree" color="accent"
+                              (ngModelChange)="onAgreeChange()"
+                              [disabled]="!isFormValid"
+                >{{'AGREE' | translate}}
+                </mat-checkbox>
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="flex-container">
+            <div>
+                <button  mat-raised-button
+                        *ngIf="!isComplete"
+                        routerLink="/profile/files"
+                        color="primary"
+                >
+                    <mat-icon>navigate_before</mat-icon>
+                </button>
+            </div>
+            <div>
+                <button mat-raised-button
+                        *ngIf="!isComplete"
+                        color="accent"
+                        [disabled]="!isValid"
+                        (click)="onSubmitClick($event)">{{'SUBMIT' | translate}}
+                </button>
+                <button mat-raised-button
+                        *ngIf="isComplete"
+                        color="primary"
+                        routerLink="/profile/what-next"
+                       >{{'WHAT_NEXT' | translate}}
+                </button>
+            </div>
+            <div>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+    </mat-action-row>
+
+</div>

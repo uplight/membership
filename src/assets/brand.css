@@ -1,0 +1,70 @@
+html {
+ // background: #333333;
+}
+
+body {
+  background-color: #FFFFFF;
+
+}
+
+.mat-toolbar {
+  /*background: url('assets/top_bg.jpg');*/
+  background: -webkit-linear-gradient(left,#4C93B5, #193B61); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #4C93B5, #193B61); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #4C93B5, #193B61); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #4C93B5, #193B61); /* Standard syntax */
+  height: 99px !important;
+  float: left;
+}
+
+.mat-toolbar .mat-icon {
+  color: white;
+}
+
+.settings-panel .mat-list-base {
+  background-color: #d3e3ec;
+  color: #2c779d;
+  padding-top: 0;
+}
+
+.settings-panel .mat-list .mat-list-item {
+  border: #cbdae3 thin solid;
+}
+
+.settings-header {
+  background-color: #124B76;
+  color: white;
+}
+
+.footer {
+  line-height: 30px;
+  background-color: #d0d0d0;
+  height: 30px;
+  padding-left: 1em;
+}
+
+.head-main{
+  margin:  0.5em;
+  margin-top: 1em;
+  font-size: 150%;
+  color: #3a8db2;
+}
+
+.hr {
+  background-image: url('line.jpg');
+  height:4px;
+  width:875px;
+  margin: 2em;
+  margin-right:2px;
+}
+
+.mat-list-item-content {
+ //  border-left: #b6b6b6 thin solid;
+
+  border-left: #64b5f6 solid;
+}
+
+.lang-label {
+  color:  #2c779d;
+  margin-left: 1em;
+}

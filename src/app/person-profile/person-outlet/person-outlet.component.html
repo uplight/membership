@@ -1,0 +1,17 @@
+<div class="profile">
+    <div>&nbsp;</div>
+       <div class="progress-navigation">
+        <div class="flex-container">
+            <a [ngClass]="classPersonal" (click)="onPersonalClick()">{{'PERSONAL' | translate}}</a>
+            <a [ngClass]="classAddress" (click)="onAddressClick()">{{'ADDRESS' | translate}}</a>
+            <a [ngClass]="classFiles" (click)="onFilesClick()">{{'FILES' | translate}}</a>
+            <a [ngClass]="classAgreement" (click)="onAgreementClick()">{{'AGREEMENT' | translate}}</a>
+        </div>
+        <mat-progress-bar mode="determinate" [value]="progressbarValue" color="primary"></mat-progress-bar>
+    </div>
+    <div class="my-content">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+

@@ -1,0 +1,38 @@
+.upload-rectangle {
+    width: 100%;
+    height: 150px;
+    background-color:gainsboro;
+    border: gray thin dashed;
+    margin-bottom: 1em;
+}
+
+.upload-rectangle.over{
+    border: #e91e63 thin solid;
+}
+
+.documents-list{
+    font-size: 10px;
+}
+
+.documents-list .mat-icon{
+    font-size: 11px;
+    width: 15px;
+    height: 15px;
+}
+
+.documents-list ul{
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-height: 1.5em;
+    max-width: 1.5em;
+}
+
+.camera-view{
+    min-width: 480px;
+    min-height: 240px;
+}
+
+

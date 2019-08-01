@@ -1,0 +1,28 @@
+<div>
+    <small>{{'PLEASE_WAIT_WHILE_UPLOAD_IN_PROGRESS' | translate}} </small>
+    <mat-list>
+        <mat-list-item *ngFor="let file of files">
+            <small class="width100px ellipses">{{file.filename}}</small>
+
+            <mat-progress-bar mode="determinate" value="{{(file.progress | async)}}"></mat-progress-bar>
+        </mat-list-item>
+    </mat-list>
+    <mat-action-row>
+        <div class="flex-container">
+            <div>
+                &nbsp;&nbsp;
+            </div>
+            <div>
+                <button mat-raised-button
+
+                        (click)="onCancelClick()"
+                >
+                    {{'CANCEL_UPLOADS' | translate}}
+                </button>
+            </div>
+            <div>
+                &nbsp;&nbsp;
+            </div>
+        </div>
+    </mat-action-row>
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <div class="in-center">
+        <div class = "spinner" *ngIf="inProgress">
+            <mat-progress-spinner mode="indeterminate" [diameter]="80"></mat-progress-spinner>
+        </div>
+
+        <mat-card>
+            <div *ngIf="isSuccess">
+                <h2>{{'SUCCESS'}}</h2>
+            </div>
+            <div *ngIf="isError" class="text-center">
+                <span class="accent"><a href="{{redirectUrl}}">{{message}}</a> </span>
+            </div>
+        </mat-card>
+    </div>
+
+
+
+</div>

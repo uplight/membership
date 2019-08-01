@@ -1,0 +1,103 @@
+<div class="mat-body my-form-container">
+    <div class="head-main">*{{'GOVERNMENT_ISSUED_IDENTIFICATION' | translate}} <mat-icon *ngIf="(isValid$ | async)">check_circle</mat-icon></div>
+
+    <div class="documents-list">
+        <div class=""><strong>{{'CANADIAN_RESIDENTS_FOR_CANADIAN_RESIDENTS' | translate}}</strong></div>
+        <ul>
+            <li *ngFor="let doc of validDocuments">
+                <mat-icon>fullscreen</mat-icon>
+                <span>{{doc | translate}}</span>
+            </li>
+        </ul>
+
+    </div>
+    <div>
+        <div class="camera">
+            <button class="camera-btn" mat-button (click)="onCameraClick()">
+                <mat-icon>camera_alt</mat-icon>
+            </button>
+            <input type="file" style="width: 230px"  placeholder="Upload file..." (change)="onBrowseChange($event)"/>
+        </div>
+
+        <div *ngIf="!makePicture"
+             ngClass="{{classUpload}}"
+             class="upload-rectangle"
+             (drop)="onDrop($event)"
+             (dragover)="onDragOver($event)"
+             (dragleave)="onDragLeave($event)"
+        >
+        </div>
+    </div>
+    <div *ngIf="makePicture" class="camera-view">
+        <app-take-picture (onFile)="onCaptureFile($event)" ></app-take-picture>
+    </div>
+
+
+    <div>
+        <div>
+            <small>{{'TOTAL_FILES_SIZE' | translate}}</small>&nbsp;
+            <small [ngClass]="classTotalSize">{{totalSize.toLocaleString()}} </small> Kb
+        </div>
+        <div>
+            <small>{{'MAX_UPLOAD' | translate}}</small>&nbsp;
+            <small>{{maxUpload.toLocaleString()}}</small> Kb
+        </div>
+
+    </div>
+    <mat-list>
+        <mat-list-item *ngFor="let myFile of personFiles">
+            <span class="type-of-file">
+                <mat-form-field *ngIf="!myFile.id">
+                <mat-select [(ngModel)]="myFile.typeOfFile" (ngModelChange)="onTypeOfFileChange()">
+                    <mat-option *ngFor="let doc of validDocuments" [value]="doc">{{doc | translate}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <span *ngIf="myFile.id">
+                {{myFile.typeOfFile | translate}}
+
+            </span>            &nbsp;&nbsp;
+            </span>
+
+            <span *ngIf="myFile.thumb">
+                 <img *ngIf="myFile.thumb.length > 5" src="/{{myFile.url}}">
+                <span *ngIf="myFile.thumb.length < 5">
+                     {{myFile.thumb}}
+                </span>
+            </span>
+
+            &nbsp;&nbsp;
+            <small class="width100px ellipses"><small>{{myFile.filename}}</small></small>
+            &nbsp;&nbsp;
+            <strong class="btn">
+                 <mat-icon matListIcon color="accent" (click)="onDeleteFileClick(myFile)">close</mat-icon>
+            </strong>
+        </mat-list-item>
+    </mat-list>
+
+    <div *ngIf="isPleaseSelect">
+        <span class="accent">{{'PLEASE_SELECT_TYPE_OF_DOCUMENT' | translate}}</span>
+
+    </div>
+    <mat-action-row>
+        <div class="flex-container">
+            <div>
+                &nbsp;&nbsp;
+            </div>
+            <div>
+                <button mat-raised-button
+                        class="save-button"
+                        [disabled]="!uploadReady"
+                        color="accent"
+                        (click)="testUploadClick()"
+                >
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+           <div>
+               &nbsp;&nbsp;
+           </div>
+        </div>
+    </mat-action-row>
+
+
+</div>

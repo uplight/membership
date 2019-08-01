@@ -1,0 +1,14 @@
+<div class="profile">
+    <a routerLink="/member/personal">Personal</a>
+    <a routerLink="/member/files">Files</a>
+    <a routerLink="/member/squadrons">Squadrons</a>
+    <a routerLink="/member/review">Review</a>
+    <a routerLink="/member/preview">Preview</a>
+    <a routerLink="/member/fees">Fees</a>
+    <a routerLink="/member/order">Create Order</a>
+    <a routerLink="/member/order-payment">Order Payment</a>
+    <a routerLink="/member/payment-result">Payment Result</a>
+    <a routerLink="/member/final"> Final</a>
+    <mat-checkbox [(ngModel)]="saveData" (ngModelChange)="onSaveChange()">Save</mat-checkbox>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,137 @@
+<div>
+    <app-personal-data></app-personal-data>
+  <div class="my-form-container mat-body">
+      <div class="form-item">
+          <mat-label><small class="radio-label">{{'FORMER_STUDENT' | translate}}</small></mat-label>
+          <mat-radio-group [(ngModel)]="memberState">
+              <mat-radio-button value="OTHER">
+                  <div class="chkLabel">{{'NO' | translate}}</div>
+              </mat-radio-button>
+              <mat-radio-button value="FORMER_STUDENT">
+                  <div>{{'YES' | translate}}</div>
+              </mat-radio-button>
+          </mat-radio-group>
+      </div>
+      <div class="form-item">
+          <mat-form-field  *ngIf="isFamily">
+              <mat-label>{{'FAMILY_ROLE' | translate}}</mat-label>
+              <mat-select  [(ngModel)]="familyRole" (ngModelChange)="onFamilyRoleChanged(-1, $event)">
+                  <mat-option *ngFor="let familyRole of (familyRoles$ | async)" [value]="familyRole">
+                      {{familyRole | translate}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+
+
+    <br/>
+
+      <div>
+          <div class="form-item">
+              <span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <mat-radio-group [(ngModel)]="isIndividual" (ngModelChange)="onTypeChanged()">
+                  <mat-radio-button value="true" [labelPosition]="'before'">
+                      {{'INDIVIDUAL'}}
+                  </mat-radio-button>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <mat-radio-button value="false">
+                      <div>{{'FAMILY' | translate}}</div>
+                  </mat-radio-button>
+              </mat-radio-group>
+          </div>
+          <div class="form-item">
+
+          </div>
+
+      </div>
+
+    <br/>
+    <div class="flex-container">
+        <div>&nbsp;</div>
+        <div>
+            <button mat-raised-button (click)="onSaveClick()">
+                <mat-icon>save</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button routerLink="/member/address"
+                    mat-raised-button [disabled]="!(isValid$ | async)"
+                    color="primary"
+            >
+                <mat-icon>navigate_next</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <br/>
+
+
+    <div class="my-form-container mat-body">
+        <div *ngIf="isFamily">
+
+            <span>{{'FAMILY_MEMBERS' | translate}}</span>
+
+            <button mat-raised-button (click)="onAddClick()">
+                <mat-icon>add</mat-icon>
+            </button>
+
+            <!--<app-membership-family></app-membership-family>-->
+
+            <mat-accordion>
+                <div *ngFor="let member of family; let i = index">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <div class="flex-container" style="width: 100%">
+                                <div>
+
+                                    {{i + 1}}
+                                </div>
+                                <div>{{member.firstName}}</div>
+                                <div>
+                                    <mat-icon [ngClass]="valids[i]">check_circle</mat-icon>
+                                </div>
+
+                                <div>
+                                    <button mat-button (click)="onFamilyDeleteClick(i)">
+                                        <mat-icon>remove</mat-icon>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+                        </mat-expansion-panel-header>
+                        <app-personal-data
+                                [family]=member
+                                (onFormChange)="onFamilyFormChange(i, $event)"
+                        >
+                        </app-personal-data>
+                        <div class="form-item">
+                            <small class="radio-label">{{'FORMER_STUDENT' | translate}}</small>
+                            <mat-radio-group [(ngModel)]="member.memberState" (ngModelChange)="onMemberStateChanged(i, $event)">
+                                <mat-radio-button value="OTHER">
+                                    <div>{{'NO' | translate}}</div>
+                                </mat-radio-button>
+                                <mat-radio-button value="FORMER_STUDENT">
+                                    <div>{{'YES' | translate}}</div>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <mat-form-field>
+                            <mat-label>{{'FAMILY_ROLE' | translate}}</mat-label>
+                            <mat-select [(ngModel)]="member.familyRole"
+                                        (ngModelChange)="onFamilyRoleChanged(i, $event)">
+                                <mat-option *ngFor="let familyRole of (familyRoles$ | async)" [value]="familyRole">
+                                    {{familyRole | translate}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+                </div>
+            </mat-accordion>
+        </div>
+    </div>
+  </div>
+</div>

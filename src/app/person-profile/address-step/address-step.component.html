@@ -1,0 +1,31 @@
+<div>
+    <app-person-address #addressComponent></app-person-address>
+
+    <mat-action-row>
+        <div class="flex-container">
+            <div>
+                <button routerLink="/profile/personal"
+                        mat-raised-button
+                        color="primary"
+                >
+                    <mat-icon>navigate_before</mat-icon>
+                </button>
+            </div>
+            <div>
+                <button mat-raised-button
+                        [disabled]="!((isValid$ | async) && isDirty)"
+                        (click)="onSaveClick()"
+                >
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+            <button routerLink="/profile/files"
+                    mat-raised-button [disabled]="!(isValid$ | async)"
+                    color="primary"
+            >
+                <mat-icon>navigate_next</mat-icon>
+            </button>
+        </div>
+    </mat-action-row>
+
+</div>

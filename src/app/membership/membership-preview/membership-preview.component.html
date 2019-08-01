@@ -1,0 +1,38 @@
+<div>
+    <h3>{{applicationType}}</h3>
+
+    <div>
+        <h4><a routerLink="/member/profile-family" ><mat-icon>edit</mat-icon></a>Applicant</h4>
+        <span>{{mainApplicant.firstName}}</span>
+        <span>{{mainApplicant.lastName}}</span>
+        <span>{{mainApplicant.birthday}}</span>
+        <span>{{mainApplicant.language}}</span>
+        <span>{{mainApplicant.familyRole}}</span>
+
+    </div>
+
+    <div>
+        <h4><a routerLink="/member/squadron" ><mat-icon>edit</mat-icon></a>Squadron</h4>
+        <div *ngIf="squadron">{{squadron.name}} / <small>{{squadron.district}}</small></div>
+    </div>
+
+
+    <div>
+        <h4><a routerLink="/member/files" ><mat-icon>edit</mat-icon></a>Files</h4>
+        <mat-list>
+            <mat-list-item *ngFor="let file of userFiles" >{{file}}</mat-list-item>
+        </mat-list>
+    </div>
+
+    <div>
+        <h4><a routerLink="/member/profile-family" ><mat-icon>edit</mat-icon></a>Family</h4>
+        <div *ngFor="let fam of family">
+            <span>{{fam.firstName}}</span>
+            <span>{{fam.lastName}}</span>
+            <span>{{fam.birthday}}</span>
+            <span>{{fam.language}}</span>
+            <span>{{fam.familyRole}}</span>
+
+        </div>
+    </div>
+</div>

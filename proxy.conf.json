@@ -1,0 +1,22 @@
+{
+  "/api": {
+    "target": "http://localhost:48000",
+    "secure": false
+  },
+  "/images": {
+    "target": "http://localhost:48000",
+    "secure": false
+  },
+  "/users_files": {
+    "target": "http://localhost:48000",
+    "secure": false
+  },
+  "/htm": {
+    "target": "http://localhost:48000",
+    "secure": false
+  },
+  "/language": {
+    "target": "http://localhost:48000",
+    "secure": false
+  }
+}

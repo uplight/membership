@@ -1,0 +1,38 @@
+<div>
+    <mat-toolbar class="toolbar">
+         <div class="logo">
+
+         </div>
+
+        <span class="fill-space"></span>
+            <div >
+                <button mat-button (click)="onSettingsClick()">
+                    <img src="{{language.icon}}"/>
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </div>
+    </mat-toolbar>
+    <div *ngIf="isSettings" ngClass="{{settingsPanelClass}}" class = "settings-panel">
+        <div class="settings-header">
+            <button mat-button (click)="onCloseMemuClick()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <mat-list>
+            <mat-radio-group [(ngModel)]="currentLanguage" (ngModelChange)="onLanguageChanged()">
+               <mat-list-item *ngFor="let ln of languages">
+                   <mat-radio-button
+                           [value]="ln.index"
+                           color="primary"
+                   >
+                       <img src="{{ln.icon}}"/>
+                       <sup class="lang-label">{{ln.label}}</sup>
+                   </mat-radio-button>
+               </mat-list-item>
+
+            </mat-radio-group>
+        </mat-list>
+
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div>
+  <app-personal-data #personalData></app-personal-data>
+    <mat-action-row>
+        <div class="flex-container">
+            <div></div>
+            <div>
+                <button mat-raised-button
+                        [disabled]="!((isValid$ | async) && isDirty)"
+                        (click)="onSaveClick()"
+                >
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+            <button routerLink="/profile/address"
+                    mat-raised-button
+                    color="primary"
+            >
+                <mat-icon>navigate_next</mat-icon>
+            </button>
+        </div>
+    </mat-action-row>
+</div>

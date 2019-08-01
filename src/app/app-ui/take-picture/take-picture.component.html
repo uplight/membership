@@ -1,0 +1,21 @@
+<div class="relative video-capture" [ngStyle]="{'width':width +'px', 'height':height + 'px'}">
+    <canvas class="hide" #myCanvas [width]="width" [height]="height"> </canvas>
+    <div  [ngClass]="imageClass" class="absolute">
+        <img [src]="imageData">
+    </div>
+
+    <div [ngClass]="videoClass" class="absolute">
+        <video  #myVideo [width]="width" [height]="height">Video stream not available.</video>
+    </div>
+    <div class="absolute buttons">
+        <button mat-button (click)="onCameraClick()" class="absolute">
+            <mat-icon>camera</mat-icon>
+        </button>
+        <button mat-button (click)="onSaveClick()" class="absolute">
+            <mat-icon>save</mat-icon>
+        </button>
+        <span>{{videoResolution}}</span>
+        &nbsp;&nbsp;
+    </div>
+
+</div>

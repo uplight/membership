@@ -1,0 +1,35 @@
+<div class="my-form-container mat-body">
+    <div [formGroup]="profileForm">
+        <mat-form-field>
+            <input matInput  formControlName="email" placeholder="{{'EMAIL' | translate}}"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="firstName" placeholder="*{{'FIRST_NAME' | translate}}"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="lastName" placeholder="*{{'LAST_NAME' | translate}}"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="middleName" placeholder="{{'MIDDLE_NAME' | translate}}"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput mask="(000) 000-0000" formControlName="phone" placeholder="*{{'MOBILE_PHONE' | translate}}"/>
+            <mat-hint>(xxx) xxx-xxxx</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput mask="(000) 000-0000" formControlName="phone2" placeholder="{{'HOME_PHONE' | translate}}"/>
+            <mat-hint>(xxx) xxx-xxxx</mat-hint>
+        </mat-form-field>
+        <br/>
+        <br/>
+        <mat-form-field>
+            <input matInput
+                   [matDatepicker]="myDatepicker"
+                   placeholder="*{{'BIRTH_DATE' | translate}}"
+                   formControlName="birthday">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+</div>

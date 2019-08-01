@@ -1,0 +1,24 @@
+<div class="my-form-container mat-body">
+    <form [formGroup]="addressForm">
+        <mat-form-field class="address-line">
+            <input matInput formControlName="address1" placeholder="*{{'ADDRESS' | translate}}"/>
+        </mat-form-field>
+        <mat-form-field class="address-line">
+            <input matInput formControlName="address2" placeholder="{{'ADDRESS_LINE_2' | translate}}"/>
+        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <input matInput formControlName="country" placeholder="*{{'COUNTRY' | translate}}"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="city" placeholder="*{{'CITY' | translate}}"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="province" placeholder="*{{'PROVINCE' | translate}}"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="postCode" placeholder="*{{'POSTAL_ZIP_CODE' | translate}}"/>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

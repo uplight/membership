@@ -1,0 +1,59 @@
+<div class="profile">
+    <div>&nbsp;</div>
+    <div class="my-content">
+        <div class="head-main">*{{'PERSONAL_INFORMATION' | translate}} <mat-icon *ngIf="(isPersonalValid$ | async)">check_circle</mat-icon></div>
+        <app-personal-data></app-personal-data>
+        <app-person-address></app-person-address>
+
+        <br/>
+        <div class="flex-container">
+            <div>
+            </div>
+            <div>
+                <button mat-raised-button
+                        [disabled]="!((isPersonalValid$ | async) && isPersonalDirty)"
+                        (click)="onSavePersonalClick()"
+                >
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+            <div>
+
+
+            </div>
+
+        </div>
+
+        <br/>
+        <br/>
+
+
+        <app-person-files>
+
+        </app-person-files>
+
+
+        <br>
+
+        <div class="head-main">*{{'AGREEMENT' | translate}}  <mat-icon *ngIf="(profileService.isAgree$ | async)">check_circle</mat-icon></div>
+        <app-person-agreement>  </app-person-agreement>
+        <br/>
+        <br/>
+        <div class="flex-container">
+            <div>
+            </div>
+            <div>
+                <button mat-raised-button
+                        color="accent"
+                        [disabled]="!isValid"
+                        (click)="onSubmitClick($event)">{{'SUBMIT' | translate}}
+                </button>
+            </div>
+            <div>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+
+    </div>
+</div>

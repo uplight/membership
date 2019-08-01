@@ -1,0 +1,49 @@
+<div>
+    <mat-accordion>
+        <div *ngFor="let member of family; let i = index">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <span>{{i+1}}</span> &nbsp;&nbsp; {{headers[i]}}
+                    <mat-icon [ngClass]="valids[i]">check_circle</mat-icon>
+                </mat-expansion-panel-header>
+                <app-personal-data
+                        [family]=member
+                        (onFormChange)="onFamilyFormChage(i, $event)"
+                >
+                </app-personal-data>
+                <div>
+                    <small>{{'FORMER_STUDENT' | translate}}</small>
+                    <mat-radio-group [(ngModel)]="member.memberState">
+                        <mat-radio-button value="OTHER">
+                            <div>{{'NO' | translate}}</div>
+                        </mat-radio-button>
+                        <mat-radio-button value="FORMER_STUDENT">
+                            <div>{{'YES' | translate}}</div>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <mat-form-field>
+                    <mat-label>{{'FAMILY_ROLE' | translate}}</mat-label>
+                    <mat-select  [(ngModel)]="member.familyRole" (ngModelChange)="onFamilyRoleChanged(i, $event)">
+                        <mat-option *ngFor="let familyRole of (familyRoles$ | async)" [value]="familyRole">
+                            {{familyRole | translate}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <button mat-button (click)="onFamilyDeleteClick(i)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+    <br/>
+    <br/>
+    <button mat-raised-button (click)="onAddClick()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <button mat-raised-button (click)="onSaveClick()">Save</button>
+</div>
